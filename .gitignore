@@ -1,0 +1,27 @@
+# deps / build
+node_modules/
+dist/
+build/
+.vercel/
+coverage/
+
+# env / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+ssl/
+
+# MessageMood model weights (large; download separately — see backend README)
+*.bin
+*.ftz
+fasttext-social-network-model*
+
+# runtime
+*.log
+.DS_Store
+
+# real Ansible inventory (copy from the .example)
+deploy/inventory.ini

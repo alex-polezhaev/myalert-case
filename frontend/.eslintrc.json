@@ -1,0 +1,35 @@
+{
+  "env": {
+    // where our code will run
+    "browser": true,
+    "es2021": true
+  },
+  /* Preset with settings. prettier must be last. 
+    It removes some eslint rules that can cause conflicts. */
+  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 11, // JavaScript standard version. Latest is 12 (2021).
+    "sourceType": "module", // Allows using import/export
+    "requireConfigFile": false
+  },
+  // Here we register the plugins we use.
+  "plugins": ["react", "prettier"],
+  /* Rules for the linter to track. If the presets do not cover every case, 
+    you can add the rules you need manually. */
+  "rules": {
+    "prettier/prettier": "error", // Required!! Highlights errors from Prettier.
+    "react/prop-types": 0, // Disable the prop-types validation rule.
+    "no-unused-vars": "error"
+  },
+  "globals": {
+    "process": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

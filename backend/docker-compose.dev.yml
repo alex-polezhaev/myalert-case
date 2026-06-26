@@ -1,0 +1,146 @@
+version: '3.8'
+
+services:
+  nginx:
+    container_name: nginx-alert
+    build:
+      context: ./Nginx
+      dockerfile: Dockerfile.dev
+    restart: always
+    ports:
+      - '80:80'
+    env_file:
+      - .env
+
+  mongo-server:
+    container_name: mongo-server-alert
+    build:
+      context: ./Mongo
+      dockerfile: Dockerfile
+    command: npm start
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - '${MONGO_PORT}:${MONGO_PORT}'
+
+  mongo-db:
+    container_name: mongo-db-alert
+    image: mongo:4.4.6
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASS}
+      MONGO_INITDB_DATABASE: base
+      # Passed through so mongo-init.js (_getEnv) can create app DB users.
+      MONGO_USER: ${MONGO_USER}
+      MONGO_PASS: ${MONGO_PASS}
+    volumes:
+      - './Mongo/data:/data/db'
+      - './mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js'
+    ports:
+      - '${MONGO_DB_PORT}:27017'
+
+  dozzle:
+    container_name: dozzle-alert
+    image: amir20/dozzle:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - '${DOZZLE_PORT}:8080'
+
+  auth:
+    container_name: auth-alert
+    build:
+      context: ./Auth
+      dockerfile: Dockerfile
+    command: npm start
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - '${AUTH_PORT}:${AUTH_PORT}'
+
+  avito:
+    container_name: avito-alert
+    build:
+      context: ./Avito
+      dockerfile: Dockerfile
+    command: npm start
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - '${AVITO_PORT}:${AVITO_PORT}'
+
+  telegram:
+    container_name: telegram-alert
+    build:
+      context: ./Telegram
+      dockerfile: Dockerfile
+    command: npm start
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - '${TELEGRAM_PORT}:${TELEGRAM_PORT}'
+
+  task-manager:
+    container_name: task-manager-alert
+    build:
+      context: ./TaskManager
+      dockerfile: Dockerfile
+    command: npm start
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - '${TASK_MANAGER_PORT}:${TASK_MANAGER_PORT}'
+
+  message-mood:
+    container_name: message-mood-alert
+    build:
+      context: ./MessageMood
+      dockerfile: Dockerfile
+    command: python3 main.py
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - '${MOOD_PORT}:${MOOD_PORT}'
+
+  security-mongo:
+    container_name: security-mongo-alert
+    build:
+      context: ./SecurityMongo
+      dockerfile: Dockerfile
+    command: npm start
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - '${SECURITY_MONGO_PORT}:${SECURITY_MONGO_PORT}'
+
+  conductor:
+    container_name: conductor-alert
+    build:
+      context: ./Conductor
+      dockerfile: Dockerfile
+    command: npm start
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - '${CONDUCTOR_PORT}:${CONDUCTOR_PORT}'
+
+  payment:
+    container_name: payment-alert
+    build:
+      context: ./Payment
+      dockerfile: Dockerfile
+    command: npm start
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - '${PAYMENT_PORT}:${PAYMENT_PORT}'

@@ -1,0 +1,9 @@
+- hosts: my-alert-frontend
+  become: true
+  tasks:
+    - name: Deploy app
+      command:
+        chdir: /home/my-alert-react
+        cmd: make docker-build-prod
+      async: 10
+      poll: 0

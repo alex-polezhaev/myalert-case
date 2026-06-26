@@ -1,0 +1,21 @@
+server {
+  listen 80;
+  access_log off;
+  error_log off;
+
+  return      301 https://your-domain.example$request_uri;
+}
+
+server {
+  listen 443 ssl;
+
+  root /var/www/html;
+  index index.html;
+
+  ssl_certificate     /etc/nginx/ssl/your-domain.full.crt;
+  ssl_certificate_key /etc/nginx/ssl/your-domain.key;
+
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+}

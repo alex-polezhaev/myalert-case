@@ -1,0 +1,24 @@
+{
+  "notify_lost_message": {
+    "use_business_hours": true,
+    "business_hours": ["7:00", "18:00"],
+    "notify_timeout": 30
+  },
+  "reply_first_message": {
+    "use_business_hours": true,
+    "business_hours": ["7:00", "18:00"],
+    "in_hours_message": "Welcome!",
+    "out_of_hours_message": "Welcome, but it is late now, please call us. "
+  },
+  "reply_lost_message": {
+    "use_business_hours": true,
+    "business_hours": ["10:00", "18:00"],
+    "in_hours_message": "We missed your message, please wait",
+    "out_of_hours_message": "We missed your message, but it is late now, please contact us by phone",
+    "notify_timeout": 30
+  },
+  "notify_negative_mood": {
+    "use_business_hours": true,
+    "business_hours": ["6:00", "18:00"]
+  }
+}

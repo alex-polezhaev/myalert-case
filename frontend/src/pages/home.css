@@ -1,0 +1,68 @@
+.home__page button {
+  font-weight: 400;
+}
+
+.home__intro {
+  background: url(../assets/home.png) no-repeat #f6f7f8;
+  background-size: contain;
+  background-position: top right;
+}
+
+.bg__box {
+  background: url(../assets/box-bg.png) no-repeat;
+  background-size: cover;
+  height: fit-content;
+  position: relative;
+  padding: 13px;
+  border-radius: 20px;
+}
+
+.bg__box .bg__box-title {
+  position: relative;
+}
+
+.bg__box .bg__box-title.blue::before {
+  background: #26c6da;
+}
+
+.bg__box .bg__box-title::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -13px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f55b3d;
+}
+
+.home__intro.bell__box {
+  background-image: none;
+}
+
+.home__intro .bell__img {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.home__page .try__it-box {
+  position: relative;
+  background: url(../assets/try-it__bg.png) no-repeat;
+  background-size: cover;
+  transform: translateY(83px);
+}
+
+.home__page .try__it-box button span {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(90deg, #f14141 0%, #fc8935 81.01%);
+}
+
+.home__page .try__it-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

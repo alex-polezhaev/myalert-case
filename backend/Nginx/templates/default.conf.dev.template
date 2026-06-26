@@ -1,0 +1,91 @@
+
+upstream auth {
+  server auth:${AUTH_PORT};
+}
+
+upstream avito {
+  server avito:${AVITO_PORT};
+}
+
+upstream telegram {
+  server telegram:${TELEGRAM_PORT};
+}
+
+upstream security-mongo {
+  server security-mongo:${SECURITY_MONGO_PORT};
+}
+
+upstream payment {
+  server payment:${PAYMENT_PORT};
+}
+
+
+server {
+
+  listen 80;
+  
+  # Unprotected routes
+  location /auth/login/telegram {
+    proxy_pass http://auth/login/telegram;
+  }
+  location /avito/messenger/v3/webhook {
+    proxy_pass http://avito/messenger/v3/webhook;
+  }
+  location /avito/get_message_data {
+    proxy_pass http://avito/get_message_data;
+  }
+  location /payment/notify {
+    proxy_pass http://payment/notify;
+  }
+  location /avito/catch_code {
+    proxy_pass http://avito/catch_code;
+  }
+
+  # Protected routes
+  location /avito {
+    auth_request /auth/check;
+    auth_request_set $auth_status $upstream_status;
+    auth_request_set $user_id  $upstream_http_user_id;
+    
+    proxy_pass http://avito$request_uri;
+    proxy_set_header user_id $user_id;
+  }
+  location /payment {
+    auth_request /auth/check;
+    auth_request_set $auth_status $upstream_status;
+    auth_request_set $user_id  $upstream_http_user_id;
+
+    proxy_pass http://payment$request_uri;
+    proxy_set_header user_id $user_id;
+  }
+  location /telegram {
+    auth_request /auth/check;
+    auth_request_set $auth_status $upstream_status;
+    auth_request_set $user_id  $upstream_http_user_id;
+
+    proxy_pass http://telegram$request_uri;
+    proxy_set_header user_id $user_id;
+  }
+  location /operation {
+    auth_request /auth/check;
+    auth_request_set $auth_status $upstream_status;
+    auth_request_set $user_id  $upstream_http_user_id;
+
+    proxy_pass http://security-mongo$request_uri;
+    proxy_set_header user_id $user_id;
+  }
+
+  # Auth server
+  location /auth/check {
+    if ($request_method = OPTIONS ) {
+        add_header Content-Length 0;
+        add_header Content-Type text/plain;
+        return 200;
+    }
+    proxy_pass http://auth/check;
+    proxy_set_header Content-Length "";
+    proxy_set_header X-Original-URI $request_uri;
+  }
+
+}
+

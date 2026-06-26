@@ -1,0 +1,396 @@
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  background-color: #f6f7f8 !important;
+}
+
+.container {
+  max-width: 66.6%;
+  margin: 0 auto;
+}
+
+body.scroll-hidden {
+  overflow: hidden;
+}
+
+.app-box > div {
+  width: 100%;
+}
+
+.gradient-bg {
+  background: linear-gradient(90deg, #f14141 0%, #fc8935 81.01%);
+}
+
+.gradient-text {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(90deg, #f14141 0%, #fc8935 81.01%);
+  background-clip: text;
+}
+
+input[type='checkbox']:checked + span {
+  background: #f55b3d !important;
+  border-color: #f55b3d !important;
+}
+
+.page-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 43.2px;
+  color: #000;
+}
+
+.card-box {
+  border-radius: 12px;
+  padding: 24px;
+  background: #fff;
+}
+
+.line-box {
+  position: relative;
+}
+
+.line-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12px;
+  width: 1px;
+  height: 100%;
+  background: #919eab3d;
+}
+
+.sidebar-nav-link.active {
+  background: #f55b3d14;
+  color: #f55b3d;
+  font-weight: 600;
+}
+
+.sidebar-nav-link.active svg path {
+  fill: #f55b3d;
+}
+
+footer {
+  background: #f6f7f8;
+}
+
+.layout-footer {
+  padding: 24px 0;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid #919eab33;
+  margin-top: 50px;
+}
+
+.layout-footer .container {
+  max-width: 93%;
+  padding: 0;
+  row-gap: 1rem;
+}
+
+.layout-footer .container .css-1a368tr {
+  margin-bottom: 0;
+}
+
+.layout-footer a {
+  margin-bottom: 8px;
+}
+
+.status__btn {
+  background: #919eab1a;
+  padding: 2px 15px 3px 15px;
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  border-radius: 6px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #919eab;
+  gap: 4px;
+}
+
+.status__btn .dot {
+  background: #919eab;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+}
+
+.status__btn.active {
+  background: #38a1691a;
+  color: #38a169;
+}
+
+.status__btn.active .dot {
+  background: #38a169;
+}
+
+.status__btn.ended {
+  background: #e53e3e1a;
+  color: #e53e3e;
+}
+
+.status__btn.ended .dot {
+  background: #e53e3e;
+}
+
+.change__map-btn {
+  padding: 7px 24px;
+  border-radius: 3px;
+  border: 1px solid #d9d9d9;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #000000d9;
+  white-space: nowrap;
+}
+
+.cart__bg {
+  background: url(./assets/cart-bg.png) no-repeat;
+  background-size: cover;
+  height: 149px;
+}
+
+.cart__bg.disabled {
+  background: url(./assets/disable-cart.png) no-repeat;
+  height: 149px;
+  background-size: cover;
+}
+
+/* media query start */
+@media screen and (max-width: 1600px) {
+  .container {
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  header .page-title {
+    font-size: 28px;
+    line-height: 33px;
+  }
+
+  .container {
+    max-width: 100%;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .home__intro {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .avito__logo-heading img {
+    width: 111px;
+  }
+
+  .home__intro .bell__img {
+    width: 386px;
+    height: 354px;
+  }
+
+  .home__page .try__it-img {
+    width: 45%;
+    top: auto;
+    bottom: 0;
+  }
+
+  .home__page .try__it-box {
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .home__intro .bell__img {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .home__intro.bell__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f6f7f8;
+    padding: 28px 32px;
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .home__page .try__it-img {
+    position: relative;
+    margin-left: auto;
+    margin-top: auto;
+    width: 400px;
+  }
+
+  .home__page .try__it-box {
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-top: 45px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .login-content {
+    position: relative;
+    max-width: 100%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 0 20px;
+  }
+
+  .home__intro {
+    height: 550px;
+    background: url(./assets/media-intro.png) no-repeat;
+    background-position: bottom center;
+    background-size: 100% 100%;
+  }
+
+  .home__intro > div {
+    max-width: 100%;
+  }
+
+  .home__intro {
+    background-color: #f6f7f8;
+  }
+
+  .home__intro.bell__box {
+    height: fit-content;
+    margin: 0 auto 100px auto;
+  }
+
+  .home__intro .bell__img {
+    height: 224px;
+    width: 230px;
+  }
+}
+
+.hamburger__menu {
+  display: none;
+}
+
+@media screen and (max-width: 640px) {
+  header .page-title {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .hamburger__menu {
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+
+  .header__btns {
+    position: absolute;
+    top: calc(86px - 1px);
+    flex-direction: column;
+    left: 0;
+    transform: translateX(-100%);
+    width: 100%;
+    height: 100vh;
+    background: #0000001a;
+    z-index: 100;
+    transition: 0.3s ease;
+    display: block;
+    padding: 1rem;
+  }
+
+  .header__btns::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+  }
+
+  .header__btns.active {
+    transform: translateX(0);
+  }
+
+  .header__btns button {
+    width: 150px;
+  }
+
+  .features .container {
+    padding: 0 20px;
+  }
+
+  .home__page .try__it-box {
+    transform: translateY(0);
+    margin-bottom: 100px;
+  }
+
+  .card-box {
+    padding: 20px;
+  }
+
+  .left-sidebar {
+    position: absolute;
+    top: 50px;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: #0000001a;
+    z-index: 100;
+    transition: 0.3s ease;
+  }
+
+  .left-sidebar.active {
+    left: 0;
+  }
+
+  .card-box {
+    padding: 20px;
+  }
+
+  .login-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 36px !important;
+    margin-bottom: 56px !important;
+  }
+
+  .avito__logo-heading img {
+    width: 65px;
+  }
+
+  .avito__logo-heading {
+    flex-wrap: wrap;
+  }
+
+  footer button {
+    width: 100%;
+  }
+
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .change__map-btn {
+    width: 100%;
+  }
+
+  .css-1c4bq35 {
+    white-space: nowrap;
+  }
+}
+
+.rmsc.multi-select {
+  --rmsc-border: #e2e8f0;
+  --rmsc-h: fit-content;
+  --rmsc-radius: 6px;
+}
